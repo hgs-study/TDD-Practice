@@ -3,14 +3,11 @@ package com.hgstudy.stringCalculator;
 public class StringCalculator {
 
     public static int splitAndSum(String text){
-
-        if(text == null || text.isEmpty()){
+        if(isBlank(text)){
             return 0;
         }
 
-        String[] values = text.split(",|:");
-        int[] numbers = toInts(values);
-        return sum(numbers);
+        return sum(toInts(split(text)));
     }
 
     private static int sum(int[] numbers) {
@@ -27,6 +24,14 @@ public class StringCalculator {
             numbers[i] = Integer.parseInt(values[i]);
         }
         return numbers;
+    }
+
+    private static String[] split(String text){
+        return text.split(",|:");
+    }
+
+    public static boolean isBlank(String text){
+        return text == null || text.isEmpty();
     }
 
 
