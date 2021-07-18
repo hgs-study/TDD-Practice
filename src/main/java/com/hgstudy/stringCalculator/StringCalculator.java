@@ -9,16 +9,24 @@ public class StringCalculator {
         }
 
         String[] values = text.split(",|:");
-        return sum(values); // 메소드 분리 : indent 1로 변경
+        int[] numbers = toInts(values);
+        return sum(numbers);
     }
 
-    // 메소드 분리 : indent 1로 변경
-    private static int sum(String[] values) {
+    private static int sum(int[] numbers) {
         int result = 0;
-        for (String value : values) {
-            result += Integer.parseInt(value);
+        for (int number : numbers) {
+            result += number;
         }
         return result;
+    }
+
+    private static int[] toInts(String[] values){
+        int[] numbers = new int[values.length];
+        for(int i =0; i < values.length ; i++){
+            numbers[i] = Integer.parseInt(values[i]);
+        }
+        return numbers;
     }
 
 
